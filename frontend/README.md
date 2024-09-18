@@ -13,7 +13,7 @@ Make sure to install the dependencies:
 
 ```bash
 # pnpm - version 9.10.0
-pnpm install
+pnpm install --frozen-lockfile
 
 ```
 

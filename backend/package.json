@@ -9,6 +9,7 @@
         "build": "tsup",
         "start": "node dist/index.js",
         "clean": "rimraf dist coverage",
+        "prod": "npm run clean && npm run build && npm run start",
         "test": "vitest run",
         "prettier:check": "prettier --check .",
         "prettier:write": "prettier --write ."
