@@ -33,3 +33,8 @@ jobs:
         run: |
           cd backend
           pnpm run test
+
+      - name: "Run Format Check"
+        run: |
+          cd backend
+          pnpm run prettier:check
