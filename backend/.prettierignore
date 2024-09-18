@@ -1,0 +1,9 @@
+dist
+coverage
+.vscode
+.output
+.nuxt
+node_modules
+tsconfig.json
+package.json
+pnpm-lock.yaml
