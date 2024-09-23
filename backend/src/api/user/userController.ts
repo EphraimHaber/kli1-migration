@@ -10,7 +10,7 @@ import { CallbackError } from 'mongoose';
 import { deleteImage, uploadImage } from '@/common/utils/cloudinaryApi';
 import { Portfolio } from '../portfolio/portfolioModel';
 import { Projects } from '../projects/projectModel';
-import { Category } from '../Category/categoryModel';
+import { Category } from '../category/categoryModel';
 import { Country, State, City } from 'country-state-city';
 import { calcCrow } from '@/common/utils/geoCalc';
 import { logger } from '@/common/utils/logger';
