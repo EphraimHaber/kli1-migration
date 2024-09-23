@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 // import { IRate } from '../interfaces/ratesInterface'
 import { IVerifyOptions } from 'passport-local';
 import { CallbackError } from 'mongoose';
-import '../middleware/passport';
+// import '../middleware/passport';
 import { deleteImage, uploadImage } from '@/common/utils/cloudinaryApi';
 import { Portfolio } from '../portfolio/portfolioModel';
 import { Projects } from '../projects/projectModel';

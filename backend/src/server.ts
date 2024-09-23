@@ -16,9 +16,10 @@ import rateLimiter from '@/common/middleware/rateLimiter';
 import requestLogger from '@/common/middleware/requestLogger';
 import { env } from '@/common/utils/envConfig';
 import { socketFunctions } from './common/utils/socket-functions';
-import { userRouter } from './api/user-example-api-spec/userRouter';
+import { userRouter as exampleUserRouter } from './api/user-example-api-spec/userRouter';
 import { authRouter } from './api/auth/authRouter';
 import { IUser } from './api/user/types';
+import { userRouter } from './api/user/userRouter';
 
 export class Context {
     user: IUser | null;
@@ -81,9 +82,10 @@ app.use((req, res, next) => {
 
 // Routes
 // this is an example for an open api spec
-// app.use('/users', userRouter);
+// app.use('/users', exampleUserRouter);
 app.use('/health-check', healthCheckRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
 
 // Swagger UI
 app.use(openAPIRouter);

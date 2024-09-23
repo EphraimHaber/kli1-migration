@@ -2,7 +2,7 @@ import { Server as SocketIOServer, Socket } from 'socket.io';
 // import { Users } from './models/User'; // Adjust the import path accordingly
 import fs from 'fs';
 import path from 'path';
-import { Users } from '../../common/models/users';
+import { Users } from '@/api/user/userModel';
 
 interface CustomSocket extends Socket {
     // Add custom properties if needed

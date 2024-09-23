@@ -6,7 +6,7 @@ import { Users } from '../user/userModel';
 // import { IUser } from '../interfaces/userInterface';
 import { IVerifyOptions } from 'passport-local';
 // import { sendMail, sendMailTest } from '../util/mailer';
-import '../middleware/passport';
+// import '../middleware/passport';
 import { logger } from '@/common/utils/logger';
 import { IUser } from '../user/types';
 // import { logger.error } from '../util/logger';
@@ -339,9 +339,12 @@ export const serviceAuthFacebook = async (req: Request, res: Response, next: Nex
     try {
         console.log('req.path: ', req.path);
         passport.authenticate('facebook', (err: any, user: Express.User, token: string) => {
-            if (err) return console.log('ERR serviceAuthFacebook: ', err);
+            if (err) {
+                logger.error('ERR serviceAuthFacebook: ', err);
+                return;
+            }
             if (!user) {
-                return console.log('ERR serviceAuthFacebook. User not found : ', err);
+                logger.error('ERR serviceAuthFacebook. User not found : ', err);
                 return res.redirect('/');
             }
 

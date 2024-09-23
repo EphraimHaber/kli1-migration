@@ -1,17 +1,20 @@
-// import { Users } from "../models/Users";
-// import { IUser } from '../interfaces/userInterface';
 import { Request, Response, NextFunction } from 'express';
-// import { NativeError } from "mongoose";
 import passport from 'passport';
 import Users from '@/api/user/userModel';
 import { IUser } from '@/api/user/types';
 import { logger } from '../utils/logger';
-//import passportLocal from "passport-local";
+import passportLocal from 'passport-local';
+import FacebookStrategy from 'passport-facebook';
+import GoogleAuthStrategy from 'passport-google-oauth20';
 import _ from 'lodash';
+import { env } from '../utils/envConfig';
 
-const LocalStrategy = require('passport-local').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy = passportLocal.Strategy;
+const FaceBookStrategy = FacebookStrategy.Strategy;
+const GoogleStrategy = GoogleAuthStrategy.Strategy;
+
+const { FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, DOMAIN_NAME } = env;
+const { GOOGLE_APP_ID, GOOGLE_APP_SECRET } = env;
 
 passport.serializeUser<any, any>((req, user, done) => {
     done(undefined, user);
@@ -76,11 +79,11 @@ const makeid = async (length: number) => {
 };
 
 passport.use(
-    new FacebookStrategy(
+    new FaceBookStrategy(
         {
-            clientID: process.env.FACEBOOK_APP_ID,
-            clientSecret: process.env.FACEBOOK_APP_SECRET,
-            callbackURL: process.env.DOMAIN_NAME + '/auth/facebook/callback',
+            clientID: FACEBOOK_APP_ID,
+            clientSecret: FACEBOOK_APP_SECRET,
+            callbackURL: `${DOMAIN_NAME}/auth/facebook/callback`,
             profileFields: ['id', 'displayName', 'photos', 'email'],
         },
         async function (accessToken: any, refreshToken: any, profile: any, done: any) {
@@ -128,9 +131,9 @@ passport.use(
 passport.use(
     new GoogleStrategy(
         {
-            clientID: process.env.GOOGLE_APP_ID,
-            clientSecret: process.env.GOOGLE_APP_SECRET,
-            callbackURL: process.env.DOMAIN_NAME + '/auth/google/callback',
+            clientID: GOOGLE_APP_ID,
+            clientSecret: GOOGLE_APP_SECRET,
+            callbackURL: DOMAIN_NAME + '/auth/google/callback',
         },
         async function (accessToken: any, refreshToken: any, profile: any, cb: any) {
             try {
