@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-import langSchema, { langInterface } from './langSchema';
+import { langSchema, langInterface } from './langSchema';
 
 export interface addressInterface {
     country: string;

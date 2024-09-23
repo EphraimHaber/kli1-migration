@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
-import Users from '@/api/user/userModel';
+import { Users } from '@/api/user/userModel';
 import { IUser } from '@/api/user/types';
 import { logger } from '../utils/logger';
 import passportLocal from 'passport-local';

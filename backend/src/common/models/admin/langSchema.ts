@@ -6,9 +6,7 @@ export interface langInterface {
     val: string;
 }
 
-const langSchema = new Schema({
+export const langSchema = new Schema({
     lang: String,
     val: String,
 });
-
-export default langSchema;

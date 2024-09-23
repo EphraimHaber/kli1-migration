@@ -1,4 +1,4 @@
-import langSchema, { langInterface } from '@/common/models/admin/langSchema';
+import { langSchema, langInterface } from '@/common/models/admin/langSchema';
 import { imageInterface, imageSchema } from '@/common/models/imageModel';
 import mongoose, { Schema, Document } from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
@@ -64,4 +64,4 @@ categorySchema.plugin(mongoosePaginate);
 
 // delete model to fix OverwriteModelError
 // delete mongoose.connection.models.Category;
-export default mongoose.model<categoryInterface>('Category', categorySchema);
+export const Category = mongoose.model<categoryInterface>('Category', categorySchema);

@@ -324,4 +324,3 @@ user.statics.getUserByToken = async function (token: string) {
 //user.plugin(passportLocalMongoose)
 
 export const Users = mongoose.model<IUser>('User', user);
-export default Users;

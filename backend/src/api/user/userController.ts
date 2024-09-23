@@ -10,13 +10,13 @@ import { CallbackError } from 'mongoose';
 import { deleteImage, uploadImage } from '@/common/utils/cloudinaryApi';
 import { Portfolio } from '../portfolio/portfolioModel';
 import { Projects } from '../projects/projectModel';
-import Category from '../Category/categoryModel';
+import { Category } from '../Category/categoryModel';
 import { Country, State, City } from 'country-state-city';
 import { calcCrow } from '@/common/utils/geoCalc';
 import { logger } from '@/common/utils/logger';
 import { IUser } from './types';
 import { IRate } from '../rate/types';
-import Users from './userModel';
+import { Users } from './userModel';
 import { Rate } from '../rate/rateModel';
 
 export const getUserPersonalFreelancerPages = async (

@@ -25,5 +25,3 @@ export const imageSchema = new Schema({
         default: '0',
     },
 });
-
-// export default imageSchema;

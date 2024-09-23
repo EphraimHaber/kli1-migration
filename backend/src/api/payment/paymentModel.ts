@@ -35,4 +35,3 @@ const payment = new Schema<IPayments>({
     },
 });
 export const Payment = mongoose.model<IPayments>('Payment', payment);
-export default Payment;
