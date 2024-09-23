@@ -1,9 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
 
-import type { User } from '@/api/user/userModel';
-import { UserRepository } from '@/api/user/userRepository';
+import type { User } from '@/api/user-example-api-spec/userModel';
+import { UserRepository } from '@/api/user-example-api-spec/userRepository';
 import { ServiceResponse } from '@/common/models/serviceResponse';
-import { logger } from '@/server';
+// import { logger } from '@/server';
 
 export class UserService {
     private userRepository: UserRepository;
@@ -22,7 +22,7 @@ export class UserService {
             return ServiceResponse.success<User[]>('Users found', users);
         } catch (ex) {
             const errorMessage = `Error finding all users: $${(ex as Error).message}`;
-            logger.error(errorMessage);
+            // logger.error(errorMessage);
             return ServiceResponse.failure(
                 'An error occurred while retrieving users.',
                 null,
@@ -41,7 +41,7 @@ export class UserService {
             return ServiceResponse.success<User>('User found', user);
         } catch (ex) {
             const errorMessage = `Error finding user with id ${id}:, ${(ex as Error).message}`;
-            logger.error(errorMessage);
+            // logger.error(errorMessage);
             return ServiceResponse.failure(
                 'An error occurred while finding user.',
                 null,
