@@ -42,3 +42,29 @@ export interface IProject extends Document {
         },
     ];
 }
+
+export interface AddRateUserParams {
+    id: number;
+    rate: number;
+    deadline: string;
+    comment: string;
+    name: string;
+    stepNumber: number;
+}
+
+// const promiseArr = data.rates.map(async (el: any) => {
+//     console.log('EL', el);
+//     const date = getDateTime();
+//     return new Rate({
+//         projectId: params.id,
+//         freelancerId: data.freelancerId,
+//         rates: el.rate,
+//         term: el.deadline,
+//         comment: el.comment,
+//         date: date,
+//         currencyType: 'USD',
+//         position: 0,
+//         name: el.name,
+//         stepNumber: el.stepNumber,
+//     });
+// });

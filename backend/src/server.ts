@@ -20,6 +20,10 @@ import { userRouter as exampleUserRouter } from './api/user-example-api-spec/use
 import { authRouter } from './api/auth/authRouter';
 import { IUser } from './api/user/types';
 import { userRouter } from './api/user/userRouter';
+import { categoryRouter } from './api/category/categoryRouter';
+import productRouter from './api/product/productRouter';
+import { projectsRouter } from './api/projects/projectsRouter';
+import { chatListRouter } from './api/chatLists/chatListRouter';
 
 export class Context {
     user: IUser | null;
@@ -86,6 +90,10 @@ app.use((req, res, next) => {
 app.use('/health-check', healthCheckRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
+app.use('/', categoryRouter);
+app.use('/', productRouter);
+app.use('/', projectsRouter);
+app.use('/', chatListRouter);
 
 // Swagger UI
 app.use(openAPIRouter);

@@ -157,3 +157,4 @@ const projects = new Schema<IProject>({
 });
 
 export const Projects = mongoose.model<IProject>('Project', projects);
+export type ProjectType = typeof Projects;

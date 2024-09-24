@@ -3,22 +3,13 @@ import passport from 'passport';
 
 import { check, validationResult } from 'express-validator';
 import { Users } from '../user/userModel';
-// import { IUser } from '../interfaces/userInterface';
 import { IVerifyOptions } from 'passport-local';
-// import { sendMail, sendMailTest } from '../util/mailer';
-// import '../middleware/passport';
 import { logger } from '@/common/utils/logger';
 import { IUser } from '../user/types';
-// import { logger.error } from '../util/logger';
 import { getDateTime, getTime } from '@/common/utils/dateUtils';
 import { sendMailTest } from '@/common/utils/mailer';
-import Payment from '../payment/paymentModel';
 import { Projects } from '../projects/projectModel';
-// import { addNewFieldsToUsersRecords } from '../util/serviceUpdateDataDB';
-
-// import { IPayments } from '../interfaces/paymentInterface';
-// import Payment from '../models/Payments';
-// import { Projects } from '../models/Projects';
+import { Payment } from '../payment/paymentModel';
 
 export const getLogin = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

@@ -3,6 +3,7 @@ import { Server as SocketIOServer, Socket } from 'socket.io';
 import fs from 'fs';
 import path from 'path';
 import { Users } from '@/api/user/userModel';
+import { logger } from './logger';
 
 interface CustomSocket extends Socket {
     // Add custom properties if needed
@@ -24,8 +25,11 @@ interface UploadFileData {
     fileName: string;
 }
 
+let copySocket: CustomSocket;
+
 export const socketFunctions = (io: SocketIOServer): void => {
     io.on('connection', (socket: CustomSocket) => {
+        copySocket = socket;
         console.log('Client connected:', socket.id);
 
         socket.on('tests', (data: any) => {
@@ -34,11 +38,7 @@ export const socketFunctions = (io: SocketIOServer): void => {
 
         socket.on('setSocketIdForUser', async (data: SetSocketIdData) => {
             try {
-                const result = await Users.findOneAndUpdate(
-                    { _id: data.userId },
-                    { userData: data.socketId },
-                    { new: true },
-                );
+                const result = await Users.findOneAndUpdate({ _id: data.userId }, { userData: data.socketId });
                 console.log('User socket ID updated:', result != null);
             } catch (error) {
                 console.error('Error updating user socket ID:', error);
@@ -52,19 +52,38 @@ export const socketFunctions = (io: SocketIOServer): void => {
 
         socket.on('uploadFile', async (data: UploadFileData) => {
             try {
-                const filePath = path.join(__dirname, 'uploads', data.fileName);
-                fs.writeFile(filePath, data.fileBuffer, (err) => {
-                    if (err) {
-                        console.error('Error saving file:', err);
-                        socket.emit('uploadError', { message: 'File upload failed' });
-                    } else {
-                        console.log('File saved successfully:', data.fileName);
-                        socket.emit('uploadSuccess', { message: 'File uploaded successfully' });
-                    }
-                });
+                logger.info('uploading file. TODO');
+                // const filePath = path.join(__dirname, 'uploads', data.fileName);
+                // fs.writeFile(filePath, data.fileBuffer, (err) => {
+                //     if (err) {
+                //         console.error('Error saving file:', err);
+                //         socket.emit('uploadError', { message: 'File upload failed' });
+                //     } else {
+                //         console.log('File saved successfully:', data.fileName);
+                //         socket.emit('uploadSuccess', { message: 'File uploaded successfully' });
+                //     }
+                // });
             } catch (error) {
                 console.error('Error handling file upload:', error);
             }
         });
     });
+};
+
+export const sendMessage = async (userId: string, senderId: string, message: string, chatRoomId: string) => {
+    try {
+        const user = await Users.findOne({ _id: userId });
+
+        if (user != null) {
+            console.log('user.userData: ', user.userData);
+            copySocket.to(user.userData).emit('newMessage', {
+                message: message,
+                chatRoomId: chatRoomId,
+            });
+        } else {
+            console.log('err sendMessage: user not found');
+        }
+    } catch (err) {
+        console.log('err sendMessage: ', err);
+    }
 };

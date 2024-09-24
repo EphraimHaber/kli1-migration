@@ -20,4 +20,5 @@ export const env = cleanEnv(process.env, {
     FACEBOOK_APP_SECRET: str(),
     GOOGLE_APP_ID: str(),
     GOOGLE_APP_SECRET: str(),
+    DB_NAME: str(),
 });
