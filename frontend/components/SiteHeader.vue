@@ -1,7 +1,14 @@
-<script setup lang="ts"></script>
+<script setup>
+import { ref } from 'vue';
+const count = ref(0);
+</script>
 
 <template>
-    <div>Component: SiteHeader</div>
+    <button @click="count++">Count is: {{ count }}</button>
 </template>
 
-<style scoped></style>
+<style scoped>
+button {
+    font-weight: bold;
+}
+</style>
