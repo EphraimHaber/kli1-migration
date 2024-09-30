@@ -4,12 +4,12 @@ export default defineNuxtConfig({
     modules: ['@nuxt/ui', '@nuxtjs/i18n'],
 
     routeRules: {
-        '/': { redirect: '/en-US' },
+        '/': { redirect: '/en' },
     },
     i18n: {
         locales: [
             {
-                code: 'en-US',
+                code: 'en',
                 dir: 'ltr',
                 name: 'English',
                 file: 'en.json',
@@ -30,7 +30,6 @@ export default defineNuxtConfig({
         langDir: 'locales',
         strategy: 'prefix',
         // vueI18n: './i18n.config.ts',
-
         detectBrowserLanguage: false,
     },
 
