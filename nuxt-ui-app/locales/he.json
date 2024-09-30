@@ -1,0 +1,107 @@
+{
+    "app_title": "שלום עולם",
+    "header": {
+        "workers": "ספקים",
+        "projects": "פרוייקטים",
+        "myProfile": "פרופיל שלי",
+        "userRole": "user role",
+        "singIn": "להתחבר",
+        "cart": "סל",
+        "ukraine": "אוראינה"
+    },
+    "footer": {
+        "footerLink01": "טירפת היהי",
+        "footerLink02": "טירפתה הנה",
+        "footerLink03": "רתא טירפת",
+        "footerLink04": "טירפתה הנה",
+        "footerLink05": "רתא טירפת",
+        "footerLink06": "טירפת היהי",
+        "footerLink07": "טירפת היהי",
+        "footerLink08": "רתא טירפת",
+        "footerLink09": "טירפתה הנה",
+        "footerLink10": "טירפתה הנה",
+        "footerLink11": "רתא טירפת"
+    },
+    "mainPage": {
+        "home": "בית",
+        "homeCaption": "כלי ראשון לכל  משימה",
+        "topCategories": "פופולרי",
+        "howItWorks": "איך זה עובד",
+        "homeTitle": "כלי ראשון - פחות כסף, פחות זמן, יותר איכות, יותר אחריות"
+    },
+    "UI": {
+        "button": {
+            "publishProject": "תפרסם פרויקט",
+            "buttonRemove": "למחוק",
+            "buttonChangeRate": "דירוג",
+            "buttonChoose": "בחר"
+        },
+        "checkbox": {
+            "rememberMe": "Remember me for 2 weeks"
+        },
+        "placeholder": {
+            "startTypingYourSearchQuery": "התחל לכתוב פה",
+            "placeholderSearchQuery": "התחל לכתוב פה",
+            "searchPlaceholderStatic": "התחל לכתוב פה"
+        },
+        "seeAllCategories": "ראה כל הקטגוריות"
+    },
+    "components": {
+        "search": {
+            "resultSearch": "תוצאות חיפוש",
+            "similarResults": "תוצאות דומות",
+            "allCategories": "כל הקטגוריות"
+        },
+        "personal": {
+            "days": "ימים",
+            "project": "פרויקט",
+            "projectDescription": "תיאור פרויקט",
+            "successRemoveProject": "מחק פרויקט",
+            "userRateNumb": "דירוג",
+            "notFindRates": "אין דירוג"
+        },
+        "layout": {
+            "weAreInSocial": "אנחנו ברשת",
+            "rightsReserved": "KLI1 2022 כל הזכויות שמורות",
+            "privacyPolicy": "מדיניות פרטיות",
+            "termsOfUse": "תנאי שימוש",
+            "contactForm": "יצירת קשר"
+        },
+        "popups": {
+            "confirmUserEmail": "אישור ההרשמה נשלח למייל שלך. אנא היכנסו לקישור במכתב שהתקבל.",
+            "errorCheckUserEmail": "המשתמש עם כתובת מייל זו כבר רשום",
+            "errorEmailLogin": "המשתמש עם כתובת מייל זו לא נמצא",
+            "errorPasswordLogin": "כתובת מייל או סיסנה שגויים",
+            "errorConfirmMail": "אימות האימייל שלך נכשל"
+        },
+        "checkout": {
+            "errorNotSpecifiedProjectTitle": "Not specified project title",
+            "errorNotSpecifiedDate": "Not specified date",
+            "errorNotSpecifiedDelivery": "Not specified delivery",
+            "errorNotSpecifiedApproximateBudget": "Not specified approximate budget",
+            "errorNotSpecifiedComment": "Not specified comment",
+            "successCreateProject": "יצירת פרויקט",
+            "successCreateProjectText": "הפרויקט נוצר בהצלחה ופורסם באתר. אתה יכול לעקוב אחר סטטוס הפרויקט בחשבון האישי שלך "
+        },
+        "rates": {
+            "statusProject": "סטטוס הפרויקט",
+            "approximateBudget": "Approximate budget",
+            "noBudgetSpecified": "No budget specified",
+            "dateDeadline": "Deadline"
+        },
+        "project": {
+            "statusProjectSelectFreelancer": "בחירת מבצע",
+            "statusProjectFreelancerSelected": "המבצע נבחר",
+            "statusProjectInWork": "בעבודה",
+            "statusProjectSuccessCompleted": "הושלם",
+            "statusProjectNotCompleted": "לא הושלם",
+            "statusProjectClosed": "נדחה"
+        },
+        "user": {
+            "userPage": "דף משתמש"
+        },
+        "customerPage": "דף לקוח",
+        "freelancerPage": "דף ספק",
+        "errorUser": "פרופיל לא נמצא או נסגר"
+    }
+}

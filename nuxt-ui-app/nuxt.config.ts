@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ['@nuxt/ui', '@nuxtjs/i18n'],
+
     routeRules: {
         '/': { redirect: '/en-US' },
     },
@@ -11,16 +12,24 @@ export default defineNuxtConfig({
                 code: 'en-US',
                 dir: 'ltr',
                 name: 'English',
+                file: 'en.json',
             },
             {
                 code: 'he',
                 dir: 'rtl',
                 name: 'Hebrew',
+                file: 'he.json',
+            },
+            {
+                code: 'ru',
+                dir: 'ltr',
+                name: 'Russian',
+                file: 'ru.json',
             },
         ],
-
+        langDir: 'locales',
         strategy: 'prefix',
-        vueI18n: './i18n.config.ts',
+        // vueI18n: './i18n.config.ts',
 
         detectBrowserLanguage: false,
     },
