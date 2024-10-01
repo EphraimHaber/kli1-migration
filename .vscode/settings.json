@@ -31,5 +31,11 @@
     "פרופיל",
     "ראשון",
     "שלום"
-  ]
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }
