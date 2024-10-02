@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-// import { aliases, mdi } from "vuetify/iconsets/mdi";
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
+    ssr: false,
     modules: ['vuetify-nuxt-module', '@nuxtjs/i18n'],
     devtools: { enabled: true },
     css: ['vuetify/styles'],
