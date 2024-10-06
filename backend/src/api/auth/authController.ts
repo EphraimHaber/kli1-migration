@@ -13,79 +13,67 @@ import { Payment } from '../payment/paymentModel';
 
 export const getLogin = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        await check('email', 'Email is not valid').isEmail().run(req);
-        await check('password', 'Password cannot be blank').isLength({ min: 1 }).run(req);
+        const loginPayload = {
+            email: req.body.email,
+            password: req.body.password,
+        };
 
-        const errors = validationResult(req);
-
-        if (!errors.isEmpty()) {
-            logger.error(errors.toString());
-            res.status(403).send({ type: 'error', message: errors });
+        logger.info(loginPayload);
+        const user = await Users.findOne({ email: loginPayload.email });
+        // logger.info(user);
+        if (!user) {
+            res.status(404).send({ type: 'error', msg: 'user not found' });
             return;
         }
 
-        passport.authenticate('local', (err: Error, user: IUser, info: IVerifyOptions) => {
+        const isGoodPassword = await isPasswordHashMatch(user, loginPayload.password);
+        if (!isGoodPassword) {
+            res.status(400).send();
+            return;
+        }
+        req.login(user, async (err) => {
             if (err) {
-                logger.error('ERR login user: ' + err);
-                res.status(200).send({ type: 'error', message: 'err passport auth' });
+                res.status(500).send();
                 return;
             }
+            //     if (user.tokenCheckedEmail != 'true') {
+            //         res.status(200).send({ type: 'error', message: 'not check email' });
+            //         return;
+            //     }
+            let randomNumber = Math.random().toString();
+            randomNumber = randomNumber.substring(2, randomNumber.length);
+            res.cookie('token', randomNumber, { maxAge: 3600 * 24 });
 
-            if (!user) {
-                logger.error('ERR fin user in DB: ' + err);
-                res.status(200).send({ type: 'error', message: 'user not found' });
-                return;
-            }
+            const lastVisit = getDateTime();
 
-            if (user.tokenCheckedEmail != 'true') {
-                res.status(200).send({ type: 'error', message: 'not check email' });
-                return;
-            }
+            await Users.findOneAndUpdate({ id: user._id }, { lastVisit: new Date(lastVisit) });
 
-            req.login(user, async (err) => {
-                if (err) {
-                    logger.error(err.toString());
-                    res.status(500).send({ type: 'error', message: err });
-                    return;
-                }
-                //console.log("req.user: ", req.user);
-                //res.status(200).send({ type: 'success', data: user })
-                var randomNumber = Math.random().toString();
-                randomNumber = randomNumber.substring(2, randomNumber.length);
-                res.cookie('token', randomNumber, { maxAge: 900000 });
+            const token = await user.generateJWT(user._id, req.query.days || 1);
 
-                const lastVisit = getDateTime();
+            res.setHeader('Authorization', 'Bearer ' + token);
 
-                await Users.findOneAndUpdate({ id: user._id }, { lastVisit: new Date(lastVisit) });
-
-                const token = await user.generateJWT(user._id, req.query.days);
-
-                res.setHeader('Authorization', 'Bearer ' + token);
-
-                res.status(200).send({
-                    type: 'success',
-                    data: {
-                        id: user._id,
-                        role: user.role,
-                        name: user.name,
-                        activeAccount: user.activeAccount ? user.activeAccount : user.role,
-                        tokenCheckedEmail: user.tokenCheckedEmail,
-                        isActive: user.isActive,
-                        country: user.country ? user.country : '',
-                        city: user.city ? user.city : '',
-                        token: token,
-                    },
-                });
-
-                if (user.role === 'customer') {
-                    res.redirect('http://' + req.headers.host + '/personal-customer');
-                } else if (user.role === 'freelancer') {
-                    res.redirect('http://' + req.headers.host + '/personal-freelancer');
-                } else {
-                    res.redirect('http://' + req.headers.host + '/');
-                }
+            res.status(200).send({
+                type: 'success',
+                data: {
+                    id: user._id,
+                    role: user.role,
+                    name: user.name,
+                    activeAccount: user.activeAccount ? user.activeAccount : user.role,
+                    tokenCheckedEmail: user.tokenCheckedEmail,
+                    isActive: user.isActive,
+                    country: user.country ? user.country : '',
+                    city: user.city ? user.city : '',
+                    token: token,
+                },
             });
-        })(req, res, next);
+            // if (user.role === 'customer') {
+            //     res.redirect('http://' + req.headers.host + '/personal-customer');
+            // } else if (user.role === 'freelancer') {
+            //     res.redirect('http://' + req.headers.host + '/personal-freelancer');
+            // } else {
+            //     res.redirect('http://' + req.headers.host + '/');
+            // }
+        });
     } catch (err) {
         res.status(200).send({ type: 'error', message: err });
     }
@@ -413,4 +401,15 @@ export const checkAuth = async (req: Request, res: Response, next: NextFunction)
         logger.error('ERR checkAuth: ' + err);
         res.status(500).send({ type: 'error', message: 'user not auth' });
     }
+};
+
+export const isPasswordHashMatch = (user: IUser, attemptedPassword: string) => {
+    return new Promise<boolean>((resolve, reject) => {
+        user.comparePassword(attemptedPassword, user.hashPassword, (err, good) => {
+            if (!good) {
+                resolve(false);
+            }
+            resolve(true);
+        });
+    });
 };

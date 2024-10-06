@@ -20,10 +20,11 @@ passport.serializeUser<any, any>((req, user, done) => {
     done(undefined, user);
 });
 
-passport.deserializeUser((id, done) => {
-    Users.findById(id, (err: NativeError, user: IUser) => {
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await Users.findById(id);
         if (user != undefined && user != null) {
-            done(err, {
+            done(null, {
                 id: user.id,
                 role: user.role,
                 tokenCheckedEmail: user.tokenCheckedEmail,
@@ -34,10 +35,10 @@ passport.deserializeUser((id, done) => {
                 country: user.country ? user.country : '',
                 city: user.city ? user.city : '',
             });
-        } else {
-            done(err, null);
         }
-    });
+    } catch (err) {
+        done(err, null);
+    }
 });
 
 passport.use(

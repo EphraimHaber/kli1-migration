@@ -29,7 +29,7 @@ export const authRouter: Router = express.Router();
 authRouter.post('/addpayment', addPayment);
 authRouter.post('/getPayments/:id', getPayments);
 authRouter.post('/updatePaymentCustomerStatus/:id', updatePaymentCustomerStatus);
-authRouter.get('/login', getLogin);
+authRouter.post('/login', getLogin);
 authRouter.post('/reg', postSignup);
 authRouter.get('/reg/checkEmail/:checkID', getConfirmMail);
 authRouter.get(['/google-login', '/google-reg'], () => authenticate('google', { scope: ['profile', 'email'] }));

@@ -87,7 +87,7 @@ app.use((req, res, next) => {
 // Routes
 // this is an example for an open api spec
 // app.use('/users', exampleUserRouter);
-app.use('/health-check', healthCheckRouter);
+// app.use('/health-check', healthCheckRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/', categoryRouter);
@@ -96,7 +96,7 @@ app.use('/', projectsRouter);
 app.use('/', chatListRouter);
 
 // Swagger UI
-app.use(openAPIRouter);
+// app.use(openAPIRouter);
 
 // Error handlers
 app.use(errorHandler());
