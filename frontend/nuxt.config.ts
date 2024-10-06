@@ -3,6 +3,11 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     ssr: false,
+    runtimeConfig: {
+        public: {
+            apiBaseUrl: process.env.API_BASE_URL || 'https://default-url.com',
+        },
+    },
     modules: ['vuetify-nuxt-module', '@nuxtjs/i18n'],
     devtools: { enabled: true },
     css: ['vuetify/styles'],

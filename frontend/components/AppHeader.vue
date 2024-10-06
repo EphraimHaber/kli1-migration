@@ -1,4 +1,6 @@
 <script setup lang="ts">
+healthCheckService().healthCheck();
+healthCheckService().login();
 const { locale, setLocale } = useI18n();
 const localeOptionsResolver = Array.from(useI18n().locales.value).map((locale) => {
     return {
