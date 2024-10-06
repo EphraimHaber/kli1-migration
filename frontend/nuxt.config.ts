@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     ssr: false,
@@ -34,7 +35,7 @@ export default defineNuxtConfig({
             {
                 code: 'he',
                 dir: 'rtl',
-                name: 'Hebrew',
+                name: 'עברית',
                 file: 'he.json',
             },
             {
@@ -46,7 +47,7 @@ export default defineNuxtConfig({
         ],
         langDir: 'locales',
         strategy: 'prefix',
-        // vueI18n: './i18n.config.ts',
+        vueI18n: './i18n.config.ts',
         detectBrowserLanguage: false,
     },
 });
