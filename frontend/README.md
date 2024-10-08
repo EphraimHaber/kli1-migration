@@ -1,20 +1,23 @@
-# Kli1 Migration
+# Nuxt 3 Minimal Starter
 
-This is a monorepo with two components:
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
--   frontend
--   backend
-
-### pnpm version 9.10.0
-
-## Frontend
+## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# pnpm - version 9.10.0
-pnpm install --frozen-lockfile
+# npm
+npm install
 
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
 ## Development Server
@@ -22,8 +25,17 @@ pnpm install --frozen-lockfile
 Start the development server on `http://localhost:3000`:
 
 ```bash
+# npm
+npm run dev
+
 # pnpm
 pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
 ## Production
@@ -31,13 +43,33 @@ pnpm run dev
 Build the application for production:
 
 ```bash
+# npm
+npm run build
+
 # pnpm
 pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
 
 Locally preview production build:
 
 ```bash
+# npm
+npm run preview
+
 # pnpm
 pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
 ```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

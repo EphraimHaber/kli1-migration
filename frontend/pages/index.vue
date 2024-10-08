@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div>Component: SiteFooter</div>
+    <div>Page: index</div>
 </template>
 
 <style scoped></style>
