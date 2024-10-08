@@ -9,8 +9,8 @@ export default defineNuxtConfig({
         },
     },
     modules: ['vuetify-nuxt-module', '@nuxtjs/i18n'],
-    devtools: { enabled: true },
-    css: ['vuetify/styles'],
+    devtools: { enabled: false },
+    css: ['vuetify/styles', 'vue3-toastify/dist/index.css'],
     build: {
         transpile: ['vuetify'],
     },

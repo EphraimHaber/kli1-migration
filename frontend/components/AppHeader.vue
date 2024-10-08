@@ -1,6 +1,4 @@
 <script setup lang="ts">
-healthCheckService().healthCheck();
-healthCheckService().login();
 const { locale, setLocale } = useI18n();
 const localeOptionsResolver = Array.from(useI18n().locales.value).map((locale) => {
     return {
@@ -32,6 +30,21 @@ const selectedLocale = computed({
             <v-img class="kli1-logo" :width="36" aspect-ratio="16/9" src="@/assets/img/kli1-logo.svg"></v-img>
         </div>
         <div class="show-me">
+            <v-dialog max-width="400" max-height="800" transition="dialog-top-transition">
+                <template v-slot:activator="{ props: activatorProps }">
+                    <v-btn
+                        v-bind="activatorProps"
+                        color="surface-variant"
+                        text="Login / Register"
+                        variant="flat"
+                    ></v-btn>
+                </template>
+
+                <template v-slot="{ isActive }">
+                    <Login @close="isActive.value = false" />
+                </template>
+            </v-dialog>
+
             <v-select
                 v-model="selectedLocale"
                 :items="localeOptions"
@@ -44,8 +57,18 @@ const selectedLocale = computed({
 </template>
 
 <style>
+.close-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+.wululu {
+    border: 1px solid red;
+}
 .show-me {
     margin-top: 2rem;
+    display: flex;
+    gap: 4px;
+    /* align-items: center; */
 }
 .v-toolbar__content {
     display: flex;

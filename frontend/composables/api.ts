@@ -7,9 +7,9 @@ export const useApi = () => {
     // const storeUser = useStoreUser()
     const api = axios.create({
         baseURL,
-        // headers: {
-        //   Authorization: `Bearer ${storeUser.token}`
-        // }
+        headers: {
+            Authorization: `Bearer ${localStorage.token}`,
+        },
     });
     return api;
 };

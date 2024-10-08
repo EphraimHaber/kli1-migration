@@ -42,7 +42,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
             //     }
             let randomNumber = Math.random().toString();
             randomNumber = randomNumber.substring(2, randomNumber.length);
-            res.cookie('token', randomNumber, { maxAge: 3600 * 24 });
+            res.cookie('token', randomNumber, { maxAge: 3600 * 24, httpOnly: true });
 
             const lastVisit = getDateTime();
 
@@ -51,6 +51,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
             const token = await user.generateJWT(user._id, req.query.days || 1);
 
             res.setHeader('Authorization', 'Bearer ' + token);
+            // res.cookie
 
             res.status(200).send({
                 type: 'success',
