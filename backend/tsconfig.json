@@ -4,17 +4,19 @@
         "module": "CommonJS",
         "baseUrl": ".",
         "paths": {
+            "@types/*": ["../shared/types/*"],
             "@/*": ["src/*"]
         },
         "moduleResolution": "Node",
         "outDir": "dist",
         "importsNotUsedAsValues": "remove",
         "strict": true,
+        "sourceMap": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "types": ["vitest/globals"]
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "../shared/types/**/*"],
     "exclude": ["node_modules"]
 }

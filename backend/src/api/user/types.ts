@@ -77,7 +77,7 @@ export interface IUser extends Document {
     transactionList: ITransactionList;
     activeAccount: string;
     settingsSite: string;
-    role: string;
+    role: 'customer' | 'freelancer' | 'none';
     auth_token: IAuthToken[];
     comparePassword: comparePasswordFunction;
     isActive: boolean;

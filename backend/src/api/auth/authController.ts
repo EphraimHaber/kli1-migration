@@ -11,7 +11,7 @@ import { sendMailTest } from '@/common/utils/mailer';
 import { Projects } from '../projects/projectModel';
 import { Payment } from '../payment/paymentModel';
 
-export const getLogin = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const loginPayload = {
             email: req.body.email,
@@ -118,7 +118,8 @@ export const addPayment = async (req: Request, res: Response, next: NextFunction
         await Projects.findOneAndUpdate({ _id: req.body.projectID }, { $set: { status: 'inProgress' } });
     } catch (err) {
         logger.error(err);
-        return res.status(500).send({ type: 'error', message: err });
+        res.status(500).send({ type: 'error', message: err });
+        return;
     }
 };
 
@@ -127,7 +128,8 @@ export const getPayments = async (req: Request, res: Response, next: NextFunctio
 
     try {
         const payments = await Payment.find({ projectID: projectId });
-        return res.json(payments);
+        res.json(payments).status(200).send();
+        return;
     } catch (e) {
         console.log('Payments :', e);
     }
@@ -142,97 +144,113 @@ export const updatePaymentCustomerStatus = async (req: Request, res: Response, n
     }
 };
 
-export const postSignup = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    try {
-        //console.log('req.body: ', req.body)
-        await check('registerEmail', 'Email is not valid').isEmail().run(req);
-        await check('registerPassword', 'Password must be at least 8 characters long').isLength({ min: 8 }).run(req);
-        //await check("confirmPassword", "Passwords do not match").equals(req.body.password).run(req);
-        //await sanitize("email").normalizeEmail({gmail_remove_dots: false}).run(req);
+export const signup = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    await check('registerEmail', 'Email is not valid').isEmail().trim().normalizeEmail().run(req);
 
-        const errors = validationResult(req);
+    await check('registerPassword', 'Password must be at least 8 characters long')
+        .isLength({ min: 8 })
+        .trim()
+        .escape()
+        .run(req);
+    await check('confirmPassword', 'Passwords do not match').equals(req.body.registerPassword).run(req);
 
-        if (!errors.isEmpty()) {
-            logger.error(errors.toString());
-            res.status(401).send({ type: 'error', message: errors });
-            return;
-        }
-
-        const dateTime = getDateTime();
-
-        const user = new Users({
-            email: req.body.registerEmail,
-            password: req.body.registerPassword,
-            name: req.body.registerName,
-            phone: req.body.phone,
-            role: req.body.role,
-            activeAccount: req.body.role,
-            photo: '/image/profile-photo.jpg',
-            lastVisit: dateTime,
-            freelancerRating: 0,
-            customerRating: 0,
-        });
-
-        Users.findOne({ email: { $in: req.body.registerEmail[0] } }, async (err: NativeError, existingUser: IUser) => {
-            if (err) {
-                logger.error('ERR fin user in DB: ' + err);
-                return res.status(500).send({ type: 'error', message: err });
-            }
-            if (existingUser) {
-                //console.log("ERR: Account with that email address already exists");
-                logger.error('ERR: Account with that email address already exists');
-                return res.status(401).send({
-                    type: 'error',
-                    message: 'Account with that email address already exists',
-                });
-            }
-            try {
-                user.save();
-            } catch (e) {
-                logger.error(e);
-                return res.status(500).send({ type: 'error', message: err });
-            }
-            // user.save((err: any) => {
-            //     if (err) {
-            //         logger.error(err.toString());
-            //         return res.status(500).send({ type: 'error', message: err });
-            //     }
-            //     req.logIn(user, async (err) => {
-            //         if (err) {
-            //             logger.error('ERR: failed login after save user: ' + err);
-            //             return res.status(500).send({ type: 'error', message: err });
-            //         }
-            //         let message: string = `
-            //         <h3>Confirm your email</h3>
-            //         <br><hr><br>
-            //         <p>You have registered on Kli1. Please confirm your email address by following the link: </p>
-            //         <a href="http://${req.headers.host}/auth/reg/checkEmail/${user.tokenCheckedEmail}">http://${req.headers.host}/auth/reg/checkEmail/${user.tokenCheckedEmail}</a>
-            //         `;
-            //         //let resultSend = await sendMail(''+ user.email[0] +'','Confirm your email on Kli1', ''+ message +'' )
-            //         let resultSend = sendMailTest({
-            //             mailAdress: user.email[0],
-            //             subject: 'Confirm your email on Kli1',
-            //             message: message,
-            //         });
-            //         if (resultSend)
-            //             res.status(200).send({
-            //                 type: 'success',
-            //                 data: { id: user._id, token: user.auth_token, role: user.role },
-            //             });
-            //         else {
-            //             logger.error('ERR: Error send verification letter by email ');
-            //             res.status(500).send({
-            //                 type: 'error',
-            //                 message: 'error send verification letter by email',
-            //             });
-            //         }
-            //     });
-            // });
-        });
-    } catch (err) {
-        logger.error('ERR postSignup: ' + err);
-        res.status(500).send({ type: 'error', message: err });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.status(400).json({ errors: errors.array() }).send();
+        return;
     }
+
+    const dateTime = getDateTime();
+
+    const user = new Users({
+        email: req.body.registerEmail,
+        password: req.body.registerPassword,
+        name: req.body.registerName,
+        phone: req.body.phone,
+        role: req.body.role,
+        activeAccount: req.body.role,
+        photo: '/image/profile-photo.jpg',
+        lastVisit: dateTime,
+        freelancerRating: 0,
+        customerRating: 0,
+    });
+
+    const existingUser = await Users.findOne({ email: { $in: req.body.registerEmail } });
+    if (existingUser) {
+        res.status(400).send({ error: 'user already exists' });
+        return;
+    }
+    try {
+        console.log(user);
+        await user.save();
+        res.status(201).send();
+        return;
+    } catch (err) {
+        console.log('error saving user', err); // Log the actual error
+        res.status(400).send({ error: 'error saving user' });
+        return;
+    }
+    // Users.findOne({ email: { $in: req.body.registerEmail[0] } }, async (err: NativeError, existingUser: IUser) => {
+    //     if (err) {
+    //         logger.error('ERR fin user in DB: ' + err);
+    //         return res.status(500).send({ type: 'error', message: err });
+    //     }
+    //     if (existingUser) {
+    //         //console.log("ERR: Account with that email address already exists");
+    //         logger.error('ERR: Account with that email address already exists');
+    //         return res.status(401).send({
+    //             type: 'error',
+    //             message: 'Account with that email address already exists',
+    //         });
+    //     }
+    //     try {
+    //         user.save();
+    //     } catch (e) {
+    //         logger.error(e);
+    //         return res.status(500).send({ type: 'error', message: err });
+    //     }
+    //     user.save((err: any) => {
+    //         if (err) {
+    //             logger.error(err.toString());
+    //             return res.status(500).send({ type: 'error', message: err });
+    //         }
+    //         req.logIn(user, async (err) => {
+    //             if (err) {
+    //                 logger.error('ERR: failed login after save user: ' + err);
+    //                 return res.status(500).send({ type: 'error', message: err });
+    //             }
+    //             let message: string = `
+    //             <h3>Confirm your email</h3>
+    //             <br><hr><br>
+    //             <p>You have registered on Kli1. Please confirm your email address by following the link: </p>
+    //             <a href="http://${req.headers.host}/auth/reg/checkEmail/${user.tokenCheckedEmail}">http://${req.headers.host}/auth/reg/checkEmail/${user.tokenCheckedEmail}</a>
+    //             `;
+    //             //let resultSend = await sendMail(''+ user.email[0] +'','Confirm your email on Kli1', ''+ message +'' )
+    //             let resultSend = sendMailTest({
+    //                 mailAdress: user.email[0],
+    //                 subject: 'Confirm your email on Kli1',
+    //                 message: message,
+    //             });
+    //             if (resultSend)
+    //                 res.status(200).send({
+    //                     type: 'success',
+    //                     data: { id: user._id, token: user.auth_token, role: user.role },
+    //                 });
+    //             else {
+    //                 logger.error('ERR: Error send verification letter by email ');
+    //                 res.status(500).send({
+    //                     type: 'error',
+    //                     message: 'error send verification letter by email',
+    //                 });
+    //             }
+    //         });
+    //     });
+    // });
+    // try {
+    // } catch (err) {
+    //     logger.error('ERR postSignup: ' + err);
+    //     res.status(500).send({ type: 'error', message: err });
+    // }
 };
 
 export const getConfirmMail = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
