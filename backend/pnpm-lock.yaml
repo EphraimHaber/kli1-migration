@@ -139,8 +139,8 @@ importers:
         specifier: ^2.8.17
         version: 2.8.17
       '@types/express':
-        specifier: ^4.17.21
-        version: 4.17.21
+        specifier: ^5.0.0
+        version: 5.0.0
       '@types/express-flash':
         specifier: ^0.0.5
         version: 0.0.5
@@ -1056,14 +1056,14 @@ packages:
   '@types/express-flash@0.0.5':
     resolution: {integrity: sha512-lz8xxkEev6JHEyHeDNb45tUkhUnPERim9td+Ov7kBDCq6+dFHlu+BvTKYz7DcLh02a3ZK+tg2mze4tZ8DgJyLw==}
 
-  '@types/express-serve-static-core@4.19.5':
-    resolution: {integrity: sha512-y6W03tvrACO72aijJ5uF02FRq5cgDR9lUxddQ8vyF+GvmjJQqbzDcJngEjURc+ZsG31VI3hODNZJ2URj86pzmg==}
+  '@types/express-serve-static-core@5.0.0':
+    resolution: {integrity: sha512-AbXMTZGt40T+KON9/Fdxx0B2WK5hsgxcfXJLr5bFpZ7b4JCex2WyQPTEKdXqfHiY5nKKBScZ7yCoO6Pvgxfvnw==}
 
   '@types/express-session@1.18.0':
     resolution: {integrity: sha512-27JdDRgor6PoYlURY+Y5kCakqp5ulC0kmf7y+QwaY+hv9jEFuQOThgkjyA53RP3jmKuBsH5GR6qEfFmvb8mwOA==}
 
-  '@types/express@4.17.21':
-    resolution: {integrity: sha512-ejlPM315qwLpaQlQDTjPdsUFSc6ZsP4AN6AlWnogPjQ7CVi7PYF3YVz+CY3jE2pwYf7E/7HlDAN0rV2GxTG0HQ==}
+  '@types/express@5.0.0':
+    resolution: {integrity: sha512-DvZriSMehGHL1ZNLzi6MidnsDhUZM/x2pRdDIKdwbUNqqwHxMlRdkxtn6/EPKyqKpHqTl/4nRZsRNLpZxZRpPQ==}
 
   '@types/gridfs-stream@0.5.39':
     resolution: {integrity: sha512-vifaBx+4uzJC3z6JocmqHk2hb10wpQS5V6c4HxfthGP/tiKCcno9RqUAO2OLQ3bqK5LtWW7GAQA7ZD5PinMRdA==}
@@ -3980,11 +3980,11 @@ snapshots:
 
   '@types/compression@1.7.5':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
   '@types/connect-flash@0.0.40':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
   '@types/connect@3.4.38':
     dependencies:
@@ -4004,9 +4004,9 @@ snapshots:
 
   '@types/express-flash@0.0.5':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
-  '@types/express-serve-static-core@4.19.5':
+  '@types/express-serve-static-core@5.0.0':
     dependencies:
       '@types/node': 22.7.5
       '@types/qs': 6.9.16
@@ -4015,12 +4015,12 @@ snapshots:
 
   '@types/express-session@1.18.0':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
-  '@types/express@4.17.21':
+  '@types/express@5.0.0':
     dependencies:
       '@types/body-parser': 1.19.5
-      '@types/express-serve-static-core': 4.19.5
+      '@types/express-serve-static-core': 5.0.0
       '@types/qs': 6.9.16
       '@types/serve-static': 1.15.7
 
@@ -4042,7 +4042,7 @@ snapshots:
 
   '@types/lusca@1.7.5':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
   '@types/methods@1.1.4': {}
 
@@ -4050,7 +4050,7 @@ snapshots:
 
   '@types/multer@1.4.12':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
   '@types/node@22.7.5':
     dependencies:
@@ -4066,36 +4066,36 @@ snapshots:
 
   '@types/passport-facebook@3.0.3':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
       '@types/passport': 1.0.16
       '@types/passport-oauth2': 1.4.17
 
   '@types/passport-google-oauth20@2.0.16':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
       '@types/passport': 1.0.16
       '@types/passport-oauth2': 1.4.17
 
   '@types/passport-local@1.0.38':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
       '@types/passport': 1.0.16
       '@types/passport-strategy': 0.2.38
 
   '@types/passport-oauth2@1.4.17':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
       '@types/oauth': 0.9.5
       '@types/passport': 1.0.16
 
   '@types/passport-strategy@0.2.38':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
       '@types/passport': 1.0.16
 
   '@types/passport@1.0.16':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
 
   '@types/qs@6.9.16': {}
 
@@ -4126,7 +4126,7 @@ snapshots:
 
   '@types/swagger-ui-express@4.1.6':
     dependencies:
-      '@types/express': 4.17.21
+      '@types/express': 5.0.0
       '@types/serve-static': 1.15.7
 
   '@types/webidl-conversions@7.0.3': {}
