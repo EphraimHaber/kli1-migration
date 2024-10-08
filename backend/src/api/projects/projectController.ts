@@ -16,7 +16,7 @@ import { chatLists } from '../chatLists/chatListsModel';
 import { Reviews } from '../reviews/reviewsModel';
 import { makePaymentAndReserv } from '@/common/utils/payment';
 import { sendMessage } from '@/common/utils/socket-functions';
-import { Category } from '../category/categoryModel';
+import { Category } from '@/api/Category/categoryModel';
 
 export const createNewProject = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

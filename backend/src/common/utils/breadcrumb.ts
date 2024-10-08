@@ -1,4 +1,4 @@
-import { Category } from '@/api/category/categoryModel';
+import { Category } from '@/api/Category/categoryModel';
 import { Product } from '@/api/product/productModel';
 
 const breadcrumb: any = [];
