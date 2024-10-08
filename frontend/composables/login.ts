@@ -5,7 +5,12 @@ export const useConnectService = () => {
         return await api.post(`/auth/login`, { email: email, password: password });
     };
 
+    const checkAuth = async () => {
+        return await api.post(`/auth/checkAuth`, {});
+    };
+
     return {
         login,
+        checkAuth,
     };
 };

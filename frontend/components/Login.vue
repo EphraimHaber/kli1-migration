@@ -18,14 +18,15 @@ const passwordRules = [
 ];
 
 const submit = async () => {
-    console.log({
-        email: email.value,
-        password: password.value,
-    });
-    toast.success('asdasd', { position: 'top-center', autoClose: 700, hideProgressBar: true });
-    const x = await useConnectService().login(email.value, password.value);
-    console.log(x);
-    // localStorage.setItem('token', )
+    const loginResponse = await useConnectService().login(email.value, password.value);
+    if (loginResponse.status === 200) {
+        toast.success('Login Successful', { position: 'top-center', autoClose: 700, hideProgressBar: true });
+        localStorage.setItem('token', loginResponse.data.data.token);
+        const t = await useConnectService().checkAuth();
+        console.log(t);
+        return;
+    }
+    toast.error('Login Failed', { position: 'top-center', autoClose: 700, hideProgressBar: true });
 };
 
 const handleClick = (provider: 'google' | 'facebook') => {

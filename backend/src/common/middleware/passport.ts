@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
-import { Users } from '@/api/user/userModel';
+import { getUserByToken, Users } from '@/api/user/userModel';
 import { IUser } from '@/api/user/types';
 import { logger } from '../utils/logger';
 import passportLocal from 'passport-local';
@@ -177,8 +177,7 @@ export const fetchUserFromToken = async (req: Request, res: Response, next: Next
         const token = req.headers.authorization || '';
         let user = null;
 
-        // @ts-ignore
-        if (token) user = await Users.getUserByToken(token.split(' ')[1]);
+        if (token) user = await getUserByToken(token.split(' ')[1]);
         if (user) {
             req.context.user = user;
             (req.context.user as any).auth_token = token;
@@ -187,17 +186,17 @@ export const fetchUserFromToken = async (req: Request, res: Response, next: Next
         next();
     } catch (err) {
         logger.error('unable to fetch get token');
-        return null;
+        next(err);
     }
 };
 
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.query?.token;
+    logger.info('check is auth');
+    const token = '' + req.query?.token;
     let user = null;
 
     if (token) {
-        // @ts-ignore
-        user = await Users.getUserByToken(token);
+        user = await getUserByToken(token);
         if (user) {
             req.context.user = user;
             (req.context.user as any).auth_token = token;

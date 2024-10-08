@@ -312,18 +312,18 @@ user.methods.generateJWT = async (id: mongoose.Types.ObjectId, dateExpired: stri
     return generateJWT(id, dateExpired);
 };
 
-user.statics.getUserByToken = async function (token: string) {
+export const getUserByToken = async function (token: string) {
     try {
         const decodeData: any = await decodeJWT(token);
         if (decodeData) {
-            // @ts-ignore
-            const decodeUser = await this.findOne({ _id: decodeData._id });
+            const decodeUser = await Users.findOne({ _id: decodeData._id });
             return decodeUser;
         } else {
             return null;
         }
     } catch (e) {
         console.log(e);
+        return null;
     }
 };
 

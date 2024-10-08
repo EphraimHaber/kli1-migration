@@ -22,7 +22,7 @@ import { authenticate } from 'passport';
 export const authRegistry = new OpenAPIRegistry();
 export const authRouter: Router = express.Router();
 
-// authRouter.use(fetchUserFromToken);
+authRouter.use(fetchUserFromToken);
 
 // authRegistry.registerPath({})
 

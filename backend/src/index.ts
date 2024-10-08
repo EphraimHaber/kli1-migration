@@ -10,7 +10,7 @@ const connectToMongo = async () => {
         await mongoose.connect(MONGODB_URI);
         logger.info('db success connect');
         if (NODE_ENV === 'development') {
-            mongoose.set('debug', true);
+            // mongoose.set('debug', true);
         }
     } catch (err) {
         logger.error(`MongoDB connection error ${err}`);
