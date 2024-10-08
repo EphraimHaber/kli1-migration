@@ -8,10 +8,10 @@ import {
     addPayment,
     checkAuth,
     getConfirmMail,
-    getLogin,
+    login,
     getPayments,
     logout,
-    postSignup,
+    signup,
     roleCheck,
     serviceAuthFacebook,
     serviceAuthGoogle,
@@ -29,8 +29,8 @@ export const authRouter: Router = express.Router();
 authRouter.post('/addpayment', addPayment);
 authRouter.post('/getPayments/:id', getPayments);
 authRouter.post('/updatePaymentCustomerStatus/:id', updatePaymentCustomerStatus);
-authRouter.post('/login', getLogin);
-authRouter.post('/reg', postSignup);
+authRouter.post('/login', login);
+authRouter.post('/signup', signup);
 authRouter.get('/reg/checkEmail/:checkID', getConfirmMail);
 authRouter.get(['/google-login', '/google-reg'], () => authenticate('google', { scope: ['profile', 'email'] }));
 authRouter.get(['/facebook-login', '/facebook-reg'], () => authenticate('facebook'));

@@ -100,7 +100,6 @@ const user = new Schema<IUser>({
     activeAccount: {
         type: String,
         required: true,
-        default: 'true',
     },
     settingsSite: {
         type: String,
@@ -260,37 +259,44 @@ const user = new Schema<IUser>({
 
 user.pre('save', function save(next) {
     try {
+        console.log('aaaaaaaaaaaaaaaaaaaaaa');
         const user = this as any as IUser;
         if (!user.isModified('password')) {
             return next();
         }
         bcrypt.genSalt(10, (err, salt) => {
             if (err) {
-                return next(err);
+                return next(err); // Pass error to the next middleware
             }
-            bcrypt.hash(user.password, salt);
+            bcrypt.hash(user.password, salt, (err, hash) => {
+                if (err) {
+                    return next(err); // Pass error to the next middleware
+                }
+                user.password = hash; // Set hashed password
+                next(); // Proceed with saving the user
+            });
         });
     } catch (err) {
         console.log('ERR user.pre: ', err);
     }
 });
 
-user.pre('save', function save(next) {
-    try {
-        const user = this as any as IUser;
-        console.log(typeof user.google_id);
-        if (user.google_id != 'false' || user.facebook_id != 'false') {
-            console.log('user.google_id: ', user.google_id);
-            user.tokenCheckedEmail = 'true';
-        } else {
-            let hash: string = generateToken();
-            user.tokenCheckedEmail = hash;
-        }
-        next();
-    } catch (err) {
-        console.log('ERR user.pre create confirm email link: ', err);
-    }
-});
+// user.pre('save', function save(next) {
+//     try {
+//         const user = this as any as IUser;
+//         console.log(typeof user.google_id);
+//         if (user.google_id != 'false' || user.facebook_id != 'false') {
+//             console.log('user.google_id: ', user.google_id);
+//             user.tokenCheckedEmail = 'true';
+//         } else {
+//             let hash: string = generateToken();
+//             user.tokenCheckedEmail = hash;
+//         }
+//         next();
+//     } catch (err) {
+//         console.log('ERR user.pre create confirm email link: ', err);
+//     }
+// });
 
 user.methods.comparePassword = comparePassword;
 
