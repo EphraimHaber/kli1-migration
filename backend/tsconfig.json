@@ -12,7 +12,7 @@
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": false,
+        "forceConsistentCasingInFileNames": true,
         "types": ["vitest/globals"]
     },
     "include": ["src/**/*"],

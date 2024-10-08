@@ -16,14 +16,14 @@ import rateLimiter from '@/common/middleware/rateLimiter';
 import requestLogger from '@/common/middleware/requestLogger';
 import { env } from '@/common/utils/envConfig';
 import { socketFunctions } from './common/utils/socket-functions';
-import { userRouter as exampleUserRouter } from './api/user-example-api-spec/userRouter';
-import { authRouter } from './api/auth/authRouter';
-import { IUser } from './api/user/types';
-import { userRouter } from './api/user/userRouter';
-import { categoryRouter } from './api/category/categoryRouter';
-import productRouter from './api/product/productRouter';
-import { projectsRouter } from './api/projects/projectsRouter';
-import { chatListRouter } from './api/chatLists/chatListRouter';
+import { userRouter as exampleUserRouter } from '@/api/user-example-api-spec/userRouter';
+import { authRouter } from '@/api/auth/authRouter';
+import { IUser } from '@/api/user/types';
+import { userRouter } from '@/api/user/userRouter';
+import { categoryRouter } from '@/api/Category/categoryRouter';
+import productRouter from '@/api/product/productRouter';
+import { projectsRouter } from '@/api/projects/projectsRouter';
+import { chatListRouter } from '@/api/chatLists/chatListRouter';
 
 export class Context {
     user: IUser | null;
