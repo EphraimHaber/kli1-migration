@@ -6,6 +6,15 @@ export default defineNuxtConfig({
         typeCheck: true,
         strict: true,
     },
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler',
+                },
+            },
+        },
+    },
     ssr: false,
     runtimeConfig: {
         public: {
