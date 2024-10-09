@@ -11,6 +11,9 @@ importers:
       '@nuxtjs/i18n':
         specifier: ^8.5.5
         version: 8.5.5(magicast@0.3.5)(rollup@4.23.0)(vue@3.5.11)
+      '@tofandel/q-tel-input':
+        specifier: ^1.0.7
+        version: 1.0.7(quasar@2.17.0)(vue@3.5.11)
       axios:
         specifier: ^1.7.7
         version: 1.7.7
@@ -1047,6 +1050,13 @@ packages:
   '@sindresorhus/merge-streams@2.3.0':
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
+
+  '@tofandel/q-tel-input@1.0.7':
+    resolution: {integrity: sha512-h3P41cDCmsvkJYsydi34ob8OJQ/5ZHXdz6uFFpBU1E88qNs6t4m0KljU9vSCjC0thg2Dt+1JOh37JkUHpDS8oQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      quasar: ^2.0.0
+      vue: ^3.0.5
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -2220,6 +2230,9 @@ packages:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
     engines: {node: '>= 0.6.3'}
 
+  libphonenumber-js@1.11.11:
+    resolution: {integrity: sha512-mF3KaORjJQR6JBNcOkluDcJKhtoQT4VTLRMrX1v/wlBayL4M8ybwEDeryyPcrSEJmD0rVwHUbBarpZwN5NfPFQ==}
+
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -2808,6 +2821,10 @@ packages:
 
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+
+  quasar@2.17.0:
+    resolution: {integrity: sha512-xFWwCt4FGuaC0M4/MA5drjBiCP7kj/5BsUPv2+dDIlyQG9YGvKIewCnWYYt02r4ijRqJSzPb7TsH89Gzkno1Mg==}
+    engines: {node: '>= 10.18.1', npm: '>= 6.13.4', yarn: '>= 1.21.1'}
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -4555,6 +4572,12 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
+  '@tofandel/q-tel-input@1.0.7(quasar@2.17.0)(vue@3.5.11)':
+    dependencies:
+      libphonenumber-js: 1.11.11
+      quasar: 2.17.0
+      vue: 3.5.11
+
   '@trysound/sax@0.2.0': {}
 
   '@types/estree@1.0.6': {}
@@ -5846,6 +5869,8 @@ snapshots:
     dependencies:
       readable-stream: 2.3.8
 
+  libphonenumber-js@1.11.11: {}
+
   lilconfig@2.1.0: {}
 
   lilconfig@3.1.2: {}
@@ -6554,6 +6579,8 @@ snapshots:
   protocols@2.0.1: {}
 
   proxy-from-env@1.1.0: {}
+
+  quasar@2.17.0: {}
 
   queue-microtask@1.2.3: {}
 
