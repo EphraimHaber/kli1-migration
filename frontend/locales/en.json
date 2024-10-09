@@ -5,7 +5,8 @@
         "projects": "Request",
         "myProfile": "My profile",
         "userRole": "user role",
-        "singIn": "Sing in",
+        "logIn": "Log In",
+        "signUp": "Sign Up",
         "cart": "Cart",
         "ukraine": "Ukraine"
     },
