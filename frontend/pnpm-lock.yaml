@@ -11,18 +11,21 @@ importers:
       '@nuxtjs/i18n':
         specifier: ^8.5.5
         version: 8.5.5(magicast@0.3.5)(rollup@4.23.0)(vue@3.5.11)
-      '@tofandel/q-tel-input':
-        specifier: ^1.0.7
-        version: 1.0.7(quasar@2.17.0)(vue@3.5.11)
       axios:
         specifier: ^1.7.7
         version: 1.7.7
+      flag-icons:
+        specifier: ^7.2.3
+        version: 7.2.3
       nuxt:
         specifier: ^3.13.0
         version: 3.13.2(@parcel/watcher@2.4.1)(@types/node@22.7.4)(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.23.0)(terser@5.34.1)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.13
+      v-phone-input:
+        specifier: ^4.3.2
+        version: 4.3.2(vue@3.5.11)(vuetify@3.7.2(vite-plugin-vuetify@2.0.4)(vue@3.5.11))
       vue:
         specifier: latest
         version: 3.5.11
@@ -1051,13 +1054,6 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  '@tofandel/q-tel-input@1.0.7':
-    resolution: {integrity: sha512-h3P41cDCmsvkJYsydi34ob8OJQ/5ZHXdz6uFFpBU1E88qNs6t4m0KljU9vSCjC0thg2Dt+1JOh37JkUHpDS8oQ==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      quasar: ^2.0.0
-      vue: ^3.0.5
-
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
@@ -1306,6 +1302,10 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
+  awesome-phonenumber@6.12.0:
+    resolution: {integrity: sha512-17Ts/ceWeWXzWZqTIRKA48y3+OyxYsAXYzuxYCn4n0+By+W0dcHk3fHszW6lLxAlCZt3VmVKY6n9AxOCU84qNw==}
+    engines: {node: '>=18'}
+
   axios@1.7.7:
     resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
 
@@ -1507,6 +1507,9 @@ packages:
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
+
+  countries-list@3.1.1:
+    resolution: {integrity: sha512-nPklKJ5qtmY5MdBKw1NiBAoyx5Sa7p2yPpljZyQ7gyCN1m+eMFs9I6CT37Mxt8zvR5L3VzD3DJBE4WQzX3WF4A==}
 
   crc-32@1.2.2:
     resolution: {integrity: sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==}
@@ -1862,6 +1865,9 @@ packages:
   fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
     engines: {node: '>=8'}
+
+  flag-icons@7.2.3:
+    resolution: {integrity: sha512-X2gUdteNuqdNqob2KKTJTS+ZCvyWeLCtDz9Ty8uJP17Y4o82Y+U/Vd4JNrdwTAjagYsRznOn9DZ+E/Q52qbmqg==}
 
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
@@ -2229,9 +2235,6 @@ packages:
   lazystream@1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
     engines: {node: '>= 0.6.3'}
-
-  libphonenumber-js@1.11.11:
-    resolution: {integrity: sha512-mF3KaORjJQR6JBNcOkluDcJKhtoQT4VTLRMrX1v/wlBayL4M8ybwEDeryyPcrSEJmD0rVwHUbBarpZwN5NfPFQ==}
 
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -2822,10 +2825,6 @@ packages:
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
-  quasar@2.17.0:
-    resolution: {integrity: sha512-xFWwCt4FGuaC0M4/MA5drjBiCP7kj/5BsUPv2+dDIlyQG9YGvKIewCnWYYt02r4ijRqJSzPb7TsH89Gzkno1Mg==}
-    engines: {node: '>= 10.18.1', npm: '>= 6.13.4', yarn: '>= 1.21.1'}
-
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
@@ -3307,6 +3306,13 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  v-phone-input@4.3.2:
+    resolution: {integrity: sha512-ZJ7hS8QTQJH67Msf5rXJwyD83xEIIKUQ/38CxqgpkOTAkY0UcTg7lQ33w/6KdJR2ODeISQ98yvv7edbuGMcF4w==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.0.0
+      vuetify: ^3.0.0
+
   vite-hot-client@0.2.3:
     resolution: {integrity: sha512-rOGAV7rUlUHX89fP2p2v0A2WWvV3QMX2UYq0fRqsWSvFvev4atHWqjwGoKaZT1VTKyLGk533ecu3eyd0o59CAg==}
     peerDependencies:
@@ -3503,6 +3509,9 @@ packages:
 
   wide-align@1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
+
+  world-flags-sprite@0.0.2:
+    resolution: {integrity: sha512-v4Qjd8+5hBNVyn9AKFcVTaKZWaz0fZliHZ7FK0ugPMbAv+oI5BZrT72rBxmGiD6D86yshA08FTo/CcAaZW7buw==}
 
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
@@ -4572,12 +4581,6 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
-  '@tofandel/q-tel-input@1.0.7(quasar@2.17.0)(vue@3.5.11)':
-    dependencies:
-      libphonenumber-js: 1.11.11
-      quasar: 2.17.0
-      vue: 3.5.11
-
   '@trysound/sax@0.2.0': {}
 
   '@types/estree@1.0.6': {}
@@ -4922,6 +4925,8 @@ snapshots:
       postcss: 8.4.47
       postcss-value-parser: 4.2.0
 
+  awesome-phonenumber@6.12.0: {}
+
   axios@1.7.7:
     dependencies:
       follow-redirects: 1.15.9
@@ -5123,6 +5128,8 @@ snapshots:
       is-what: 4.1.16
 
   core-util-is@1.0.3: {}
+
+  countries-list@3.1.1: {}
 
   crc-32@1.2.2: {}
 
@@ -5499,6 +5506,8 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
+  flag-icons@7.2.3: {}
+
   flatted@3.3.1: {}
 
   follow-redirects@1.15.9: {}
@@ -5868,8 +5877,6 @@ snapshots:
   lazystream@1.0.1:
     dependencies:
       readable-stream: 2.3.8
-
-  libphonenumber-js@1.11.11: {}
 
   lilconfig@2.1.0: {}
 
@@ -6580,8 +6587,6 @@ snapshots:
 
   proxy-from-env@1.1.0: {}
 
-  quasar@2.17.0: {}
-
   queue-microtask@1.2.3: {}
 
   queue-tick@1.0.1: {}
@@ -7138,6 +7143,16 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
+  v-phone-input@4.3.2(vue@3.5.11)(vuetify@3.7.2(vite-plugin-vuetify@2.0.4)(vue@3.5.11)):
+    dependencies:
+      awesome-phonenumber: 6.12.0
+      countries-list: 3.1.1
+      vue: 3.5.11
+      vuetify: 3.7.2(vite-plugin-vuetify@2.0.4)(vue@3.5.11)
+    optionalDependencies:
+      flag-icons: 7.2.3
+      world-flags-sprite: 0.0.2
+
   vite-hot-client@0.2.3(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1)):
     dependencies:
       vite: 5.4.8(@types/node@22.7.4)(terser@5.34.1)
@@ -7333,6 +7348,9 @@ snapshots:
   wide-align@1.1.5:
     dependencies:
       string-width: 4.2.3
+
+  world-flags-sprite@0.0.2:
+    optional: true
 
   wrap-ansi@7.0.0:
     dependencies:

@@ -10,9 +10,14 @@ export default defineNuxtConfig({
     },
     modules: ['vuetify-nuxt-module', '@nuxtjs/i18n'],
     devtools: { enabled: false },
-    css: ['vuetify/styles', 'vue3-toastify/dist/index.css', '@tofandel/q-tel-input/dist/@tofandel/style.css'],
+    css: [
+        'vuetify/styles',
+        'vue3-toastify/dist/index.css',
+        'flag-icons/css/flag-icons.min.css',
+        'v-phone-input/dist/v-phone-input.css',
+    ],
     build: {
-        transpile: ['vuetify'],
+        transpile: ['vuetify', 'v-phone-input'],
     },
     imports: {
         autoImport: true,

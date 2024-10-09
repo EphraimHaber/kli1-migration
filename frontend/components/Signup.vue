@@ -17,14 +17,14 @@ const passwordRules = [
     (v: string) => v.length >= 8 || 'Password must be at least 6 characters',
 ];
 
-const submit = async () => {
-    const loginResponse = await useConnectService().login(email.value, password.value);
-    if (loginResponse.status !== 200) {
-        toast.error('Login Failed', { position: 'top-center', autoClose: 700, hideProgressBar: true });
-        return;
-    }
-    toast.success('Login Successful', { position: 'top-center', autoClose: 700, hideProgressBar: true });
-    localStorage.setItem('token', loginResponse.data.data.token);
+const signup = async () => {
+    // const loginResponse = await useConnectService().login(email.value, password.value);
+    // if (loginResponse.status !== 200) {
+    //     toast.error('Login Failed', { position: 'top-center', autoClose: 700, hideProgressBar: true });
+    //     return;
+    // }
+    // toast.success('Login Successful', { position: 'top-center', autoClose: 700, hideProgressBar: true });
+    // localStorage.setItem('token', loginResponse.data.data.token);
     // const t = await useConnectService().checkAuth();
     // console.log(t);
 };
@@ -46,8 +46,9 @@ const emit = defineEmits<{
                 <v-icon :color="'#d23d20'">mdi-close</v-icon>
             </v-btn>
         </div>
-        <div class="dialog-header mb-2">{{ $t('header.logIn') }}</div>
-        <v-form class="pl-14 pr-14" ref="formRef" v-model="valid" lazy-validation>
+        <div class="dialog-header mb-2">{{ $t('header.signUp') }}</div>
+        <PhoneInput />
+        <!-- <v-form class="pl-14 pr-14" ref="formRef" v-model="valid" lazy-validation>
             <v-text-field label="Email" v-model="email" :rules="emailRules" required></v-text-field>
 
             <v-text-field
@@ -58,8 +59,7 @@ const emit = defineEmits<{
                 required
             ></v-text-field>
             <v-btn style="padding: 10px" block :color="'#d23d20'" :disabled="!valid" @click="submit">Log in</v-btn>
-        </v-form>
-
+        </v-form> -->
         <v-card-text class="text-center"> Sing in with your social network </v-card-text>
 
         <div class="o-auth-icon-buttons items-center mb-3">
