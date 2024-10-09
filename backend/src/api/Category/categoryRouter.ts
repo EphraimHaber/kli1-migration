@@ -17,6 +17,7 @@ categoryRouter.use(fetchUserFromToken);
 categoryRouter.post('/categories', getMainCategories);
 categoryRouter.post('/allcategories', getAllCategories);
 categoryRouter.get('/categories/:id', loadCategories);
+categoryRouter.get('/categoriestop', getTopCategories);
 categoryRouter.post('/categories/top', getTopCategories);
 categoryRouter.post('/categories/:id', getCategories);
 categoryRouter.get('/subcategories/:id', loadCategories);

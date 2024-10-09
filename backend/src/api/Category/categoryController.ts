@@ -89,9 +89,10 @@ export const getCategories = async (req: Request, res: Response, next: NextFunct
 
 export const getTopCategories = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        //const category = await Category.find({isVisible: true}).limit(10);
-        const category = await Category.find({ $and: [{ isVisible: true }, { parentCategory: null }] });
+        const category = await Category.find({ isVisible: true }).limit(10);
+        // const category = await Category.find({ $and: [{ isVisible: true }, { parentCategory: null }] });
 
+        // res.status(200).send({ type: 'success' });
         res.status(200).send({ type: 'success', data: category });
     } catch (err) {
         logger.error('ERR getTopCategories: ' + err);

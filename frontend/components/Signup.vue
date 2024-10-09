@@ -103,6 +103,9 @@ const emit = defineEmits<{
                     <v-col cols="12" md="6">
                         <v-phone-input
                             ref="inputRef"
+                            :phone-props="{ variant: 'outlined' }"
+                            :country-label="''"
+                            :country-props="{ variant: 'outlined' }"
                             v-model="phone"
                             :invalid-message="ignoreErrors"
                             :rules="phoneRules"

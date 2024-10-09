@@ -2,8 +2,12 @@
     <NuxtLayout>
         <v-app>
             <AppHeader />
-            <NuxtPage />
+            <v-main>
+                <NuxtPage />
+            </v-main>
         </v-app>
         <AppFooter />
     </NuxtLayout>
 </template>
+
+<style></style>

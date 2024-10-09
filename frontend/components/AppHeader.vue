@@ -32,7 +32,7 @@ const selectedLocale = computed({
         <div class="show-me">
             <v-dialog max-width="400" max-height="800" transition="dialog-top-transition">
                 <template v-slot:activator="{ props: activatorProps }">
-                    <v-btn :variant="'elevated'" outline color="indigo" v-bind="activatorProps">{{
+                    <v-btn :variant="'elevated'" outline color="deep-orange-accent-3" v-bind="activatorProps">{{
                         $t('header.logIn')
                     }}</v-btn>
                 </template>
@@ -44,7 +44,7 @@ const selectedLocale = computed({
 
             <v-dialog max-width="700" max-height="800" transition="dialog-top-transition">
                 <template v-slot:activator="{ props: activatorProps }">
-                    <v-btn :variant="'elevated'" outline color="indigo" v-bind="activatorProps">{{
+                    <v-btn :variant="'elevated'" outline color="grey-darken-4" v-bind="activatorProps">{{
                         $t('header.signUp')
                     }}</v-btn>
                 </template>
