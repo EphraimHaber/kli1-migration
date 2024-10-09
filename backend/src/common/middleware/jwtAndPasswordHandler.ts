@@ -36,6 +36,7 @@ export type comparePasswordFunction = (
 ) => void;
 
 export const comparePassword: comparePasswordFunction = (candidatePassword, hashPassword, cb) => {
+    console.log('in compare password');
     bcrypt.compare(candidatePassword, hashPassword, (err, isMatch) => {
         cb(err, isMatch);
     });

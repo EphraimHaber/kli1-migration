@@ -272,7 +272,9 @@ user.pre('save', function save(next) {
                 if (err) {
                     return next(err); // Pass error to the next middleware
                 }
-                user.password = hash; // Set hashed password
+                console.log(user.password, hash);
+                user.hashPassword = hash;
+                user.password = salt;
                 next(); // Proceed with saving the user
             });
         });

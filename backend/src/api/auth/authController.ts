@@ -18,7 +18,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
             password: req.body.password,
         };
 
-        logger.info(loginPayload);
+        // logger.info(loginPayload);
         const user = await Users.findOne({ email: loginPayload.email });
         // logger.info(user);
         if (!user) {
@@ -27,6 +27,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
         }
 
         const isGoodPassword = await isPasswordHashMatch(user, loginPayload.password);
+        console.log(isGoodPassword);
         if (!isGoodPassword) {
             res.status(400).send();
             return;

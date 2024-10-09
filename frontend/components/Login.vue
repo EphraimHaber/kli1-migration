@@ -25,12 +25,17 @@ const submit = async () => {
     }
     toast.success('Login Successful', { position: 'top-center', autoClose: 700, hideProgressBar: true });
     localStorage.setItem('token', loginResponse.data.data.token);
+    emit('close');
     // const t = await useConnectService().checkAuth();
     // console.log(t);
 };
 
 const handleClick = (provider: 'google' | 'facebook') => {
     console.log(`Image button clicked ${provider}`);
+};
+
+const closePopup = async () => {
+    emit('close');
 };
 
 const emit = defineEmits<{
@@ -42,20 +47,29 @@ const emit = defineEmits<{
     <v-card>
         <div class="close-button-container">
             <!-- <v-btn icon class="close-btn" elevation="0" @click="isActive.value = false"> -->
-            <v-btn icon class="close-btn" elevation="0" @click="emit('close')">
+            <v-btn icon class="close-btn" elevation="0" @click="closePopup">
                 <v-icon :color="'#d23d20'">mdi-close</v-icon>
             </v-btn>
         </div>
         <div class="dialog-header mb-2">{{ $t('header.logIn') }}</div>
         <v-form class="pl-14 pr-14" ref="formRef" v-model="valid" lazy-validation>
-            <v-text-field label="Email" v-model="email" :rules="emailRules" required></v-text-field>
+            <v-text-field
+                class="mb-2"
+                label="Email"
+                v-model="email"
+                :rules="emailRules"
+                required
+                :variant="'outlined'"
+            ></v-text-field>
 
             <v-text-field
+                class="mb-2"
                 label="Password"
                 v-model="password"
                 :rules="passwordRules"
                 type="password"
                 required
+                :variant="'outlined'"
             ></v-text-field>
             <v-btn style="padding: 10px" block :color="'#d23d20'" :disabled="!valid" @click="submit">Log in</v-btn>
         </v-form>

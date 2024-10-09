@@ -42,7 +42,7 @@ const selectedLocale = computed({
                 </template>
             </v-dialog>
 
-            <v-dialog max-width="400" max-height="800" transition="dialog-top-transition">
+            <v-dialog max-width="700" max-height="800" transition="dialog-top-transition">
                 <template v-slot:activator="{ props: activatorProps }">
                     <v-btn :variant="'elevated'" outline color="indigo" v-bind="activatorProps">{{
                         $t('header.signUp')

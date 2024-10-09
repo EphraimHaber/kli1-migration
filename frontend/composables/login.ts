@@ -9,8 +9,20 @@ export const useConnectService = () => {
         return await api.post(`/auth/checkAuth`, {});
     };
 
+    const signup = async (data: SignupRequest) => {
+        return await api.post(`/auth/signup`, data);
+    };
+
     return {
         login,
         checkAuth,
+        signup,
     };
 };
+
+export interface SignupRequest {
+    registerEmail: string;
+    registerPassword: string;
+    confirmPassword: string;
+    role: 'customer' | 'freelancer' | 'none';
+}
