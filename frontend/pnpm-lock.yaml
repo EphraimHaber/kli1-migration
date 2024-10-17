@@ -25,7 +25,7 @@ importers:
         version: 3.4.14
       v-phone-input:
         specifier: ^4.3.2
-        version: 4.3.2(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2)
+        version: 4.3.2(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3)
       vue:
         specifier: latest
         version: 3.5.12(typescript@5.6.3)
@@ -37,7 +37,7 @@ importers:
         version: 0.2.3(vue@3.5.12(typescript@5.6.3))
       vuetify:
         specifier: ^3.7.2
-        version: 3.7.2(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
+        version: 3.7.3(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
       vuetify-nuxt-module:
         specifier: ^0.18.3
         version: 0.18.3(magicast@0.3.5)(rollup@4.23.0)(typescript@5.6.3)(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))
@@ -3744,8 +3744,8 @@ packages:
   vuetify-nuxt-module@0.18.3:
     resolution: {integrity: sha512-Mv5mcqfqk5dR9oVJiITXn5p4NmDzp57AR2Txf/0iIoAjFlMsDWzTpUvn9ELTzDI3Z0LjiYVqptwxrOlMcju2Wg==}
 
-  vuetify@3.7.2:
-    resolution: {integrity: sha512-q0WTcRG977+a9Dqhb8TOaPm+Xmvj0oVhnBJhAdHWFSov3HhHTTxlH2nXP/GBTXZuuMHDbBeIWFuUR2/1Fx0PPw==}
+  vuetify@3.7.3:
+    resolution: {integrity: sha512-bpuvBpZl1/+nLlXDgdVXekvMNR6W/ciaoa8CYlpeAzAARbY8zUFSoBq05JlLhkIHI58AnzKVy4c09d0OtfYAPg==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       typescript: '>=4.7'
@@ -5152,11 +5152,11 @@ snapshots:
 
   '@vue/shared@3.5.12': {}
 
-  '@vuetify/loader-shared@2.0.3(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2)':
+  '@vuetify/loader-shared@2.0.3(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3)':
     dependencies:
       upath: 2.0.1
       vue: 3.5.12(typescript@5.6.3)
-      vuetify: 3.7.2(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
+      vuetify: 3.7.3(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
 
   abbrev@1.1.1: {}
 
@@ -7633,12 +7633,12 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  v-phone-input@4.3.2(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2):
+  v-phone-input@4.3.2(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3):
     dependencies:
       awesome-phonenumber: 6.12.0
       countries-list: 3.1.1
       vue: 3.5.12(typescript@5.6.3)
-      vuetify: 3.7.2(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
+      vuetify: 3.7.3(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
     optionalDependencies:
       flag-icons: 7.2.3
       world-flags-sprite: 0.0.2
@@ -7721,14 +7721,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-vuetify@2.0.4(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2):
+  vite-plugin-vuetify@2.0.4(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3):
     dependencies:
-      '@vuetify/loader-shared': 2.0.3(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2)
+      '@vuetify/loader-shared': 2.0.3(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3)
       debug: 4.3.7
       upath: 2.0.1
       vite: 5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1)
       vue: 3.5.12(typescript@5.6.3)
-      vuetify: 3.7.2(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
+      vuetify: 3.7.3(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
     transitivePeerDependencies:
       - supports-color
 
@@ -7817,8 +7817,8 @@ snapshots:
       ufo: 1.5.4
       unconfig: 0.5.5
       upath: 2.0.1
-      vite-plugin-vuetify: 2.0.4(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2)
-      vuetify: 3.7.2(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
+      vite-plugin-vuetify: 2.0.4(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3)
+      vuetify: 3.7.3(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3))
     transitivePeerDependencies:
       - magicast
       - rollup
@@ -7829,12 +7829,12 @@ snapshots:
       - webpack-plugin-vuetify
       - webpack-sources
 
-  vuetify@3.7.2(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3)):
+  vuetify@3.7.3(typescript@5.6.3)(vite-plugin-vuetify@2.0.4)(vue@3.5.12(typescript@5.6.3)):
     dependencies:
       vue: 3.5.12(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
-      vite-plugin-vuetify: 2.0.4(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.2)
+      vite-plugin-vuetify: 2.0.4(vite@5.4.8(@types/node@22.7.4)(sass-embedded@1.79.4)(sass@1.80.1)(terser@5.34.1))(vue@3.5.12(typescript@5.6.3))(vuetify@3.7.3)
 
   webidl-conversions@3.0.1: {}
 
