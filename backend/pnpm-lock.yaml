@@ -82,7 +82,7 @@ importers:
         version: 6.9.0(@aws-sdk/credential-providers@3.658.0(@aws-sdk/client-sso-oidc@3.658.0(@aws-sdk/client-sts@3.658.0)))(socks@2.8.3)
       mongoose:
         specifier: ^8.6.3
-        version: 8.7.1(@aws-sdk/credential-providers@3.658.0(@aws-sdk/client-sso-oidc@3.658.0(@aws-sdk/client-sts@3.658.0)))(socks@2.8.3)
+        version: 8.7.2(@aws-sdk/credential-providers@3.658.0(@aws-sdk/client-sso-oidc@3.658.0(@aws-sdk/client-sts@3.658.0)))(socks@2.8.3)
       mongoose-paginate-v2:
         specifier: ^1.8.3
         version: 1.8.5
@@ -2065,8 +2065,8 @@ packages:
     resolution: {integrity: sha512-kFxhot+yw9KmpAGSSrF/o+f00aC2uawgNUbhyaM0USS9L7dln1NA77/pLg4lgOaRgXMtfgCENamjqZwIM1Zrig==}
     engines: {node: '>=4.0.0'}
 
-  mongoose@8.7.1:
-    resolution: {integrity: sha512-RpNMyhyzLVCVbf8xTVbrf/18G3MqQzNw5pJdvOJ60fzbCa3cOZzz9L+8XpqzBXtRlgZGWv0T7MmOtvrT8ocp1Q==}
+  mongoose@8.7.2:
+    resolution: {integrity: sha512-Ok4VzMds9p5G3ZSUhmvBm1GdxanbzhS29jpSn02SPj+IXEVFnIdfwAlHHXWkyNscZKlcn8GuMi68FH++jo0flg==}
     engines: {node: '>=16.20.1'}
 
   mpath@0.9.0:
@@ -5096,7 +5096,7 @@ snapshots:
 
   mongoose-paginate-v2@1.8.5: {}
 
-  mongoose@8.7.1(@aws-sdk/credential-providers@3.658.0(@aws-sdk/client-sso-oidc@3.658.0(@aws-sdk/client-sts@3.658.0)))(socks@2.8.3):
+  mongoose@8.7.2(@aws-sdk/credential-providers@3.658.0(@aws-sdk/client-sso-oidc@3.658.0(@aws-sdk/client-sts@3.658.0)))(socks@2.8.3):
     dependencies:
       bson: 6.8.0
       kareem: 2.6.3
