@@ -1,4 +1,4 @@
-FROM node:22.9-alpine3.19 as build
+FROM node:22.10-alpine3.19 as build
 
 RUN npm install -g pnpm@9.10.0
 
